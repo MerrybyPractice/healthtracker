@@ -16,3 +16,8 @@
     clicks the user has made.
 
 ### Inspiring Images
+
+    Unicyclist by Noel Nichols on Unsplash
+    Standing Yoga Practitioner by Purnomo Capunk on Unsplash
+    Legs Crossed and Seated by alfred and joa on Unsplash
+    Headstand by rishikesh yogpeeth on Unsplash
