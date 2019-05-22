@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Healthtracker</string>
+    <string name="nav_to_finger_exercise"> Go to Finger Exercise</string>
 </resources>

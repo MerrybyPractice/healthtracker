@@ -2,6 +2,7 @@ package com.example.healthtracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -55,21 +56,15 @@ public class MainActivity extends AppCompatActivity {
     };
     //end splicing in from https://github.com/sayyam/carouselview
 
-    int countingClicks = 0;
+
 
     public void onButtonClick(View view){
-
-
-        TextView text = findViewById(R.id.finger_text);
-
-        countingClicks++;
-
-        String changeText = countingClicks + " Clicks";
-
-        text.setText(changeText);
-
-    }
-
+        Intent intent = new Intent(this, FingerWorkout.class);
+        startActivity(intent);
+        }
 
 }
+
+
+
 

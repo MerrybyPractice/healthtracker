@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:elevation="-900dp"
+    tools:context=".FingerWorkout">
+
+    <TextView
+        android:id="@+id/finger_text"
+        android:layout_width="49dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="235dp"
+        android:layout_marginBottom="130dp"
+        android:fontFamily="sans-serif-light"
+        android:lineSpacingExtra="8sp"
+        android:text="Start? "
+        android:textAlignment="center"
+        android:textColor="@color/colorText"
+        android:textSize="18sp"
+        android:typeface="normal"
+        app:layout_constraintBottom_toTopOf="@+id/finger_Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+    <Button
+        android:id="@+id/finger_Button"
+        android:layout_width="180dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="252dp"
+        android:background="@color/colorPrimary"
+        android:elevation="900dp"
+        android:fontFamily="sans-serif-medium"
+        android:lineSpacingExtra="8sp"
+        android:onClick="onButtonClick"
+        android:text="Finger Workout!"
+        android:textColor="@color/colorText"
+        android:textSize="18sp"
+        android:typeface="normal"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/finger_text" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
