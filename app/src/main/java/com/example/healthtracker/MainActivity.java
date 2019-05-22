@@ -56,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
     };
     //end splicing in from https://github.com/sayyam/carouselview
 
-
-
     public void onButtonClick(View view){
         Intent intent = new Intent(this, FingerWorkout.class);
         startActivity(intent);
