@@ -40,9 +40,9 @@
     goal is to provide a view that will be inspiring and hopeful for someone seeking health from any
     place in life.
 
-    [Noel Nichols on Unsplash](https://unsplash.com/photos/yOMBnHVpxdg)
-    [Purnomo Capunk on Unsplash](https://unsplash.com/photos/kOqDOldrUR8)
-    [alfred and joa on Unsplash](https://unsplash.com/photos/O5Wy32Um6vw)
-    [rishikesh yogpeeth on Unsplash](https://unsplash.com/photos/CEGtclvmIII)
+ [Noel Nichols on Unsplash](https://unsplash.com/photos/yOMBnHVpxdg)
+ [Purnomo Capunk on Unsplash](https://unsplash.com/photos/kOqDOldrUR8)
+ [alfred and joa on Unsplash](https://unsplash.com/photos/O5Wy32Um6vw)
+ [rishikesh yogpeeth on Unsplash](https://unsplash.com/photos/CEGtclvmIII)
 
-    CarouselView library can be found [here](https://github.com/sayyam/carouselview)
+ CarouselView library can be found [here](https://github.com/sayyam/carouselview)
