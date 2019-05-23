@@ -1,10 +1,10 @@
 package com.example.healthtracker;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class FingerWorkout extends AppCompatActivity {
 
@@ -17,7 +17,7 @@ public class FingerWorkout extends AppCompatActivity {
 
     int countingClicks = 0;
 
-    public void onButtonClick(View view){
+    public void onButtonClick(View view) {
 
 
         TextView text = findViewById(R.id.finger_text);

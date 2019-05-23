@@ -1,15 +1,14 @@
 package com.example.healthtracker;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     /* from https://github.com/sayyam/carouselview as part of the provided implementation for the
@@ -56,10 +55,18 @@ public class MainActivity extends AppCompatActivity {
     };
     //end splicing in from https://github.com/sayyam/carouselview
 
-    public void onButtonClick(View view){
+
+    // here are all the intents that govern the "nav bar" on the home page
+
+    public void onFingerButtonClick(View view) {
         Intent intent = new Intent(this, FingerWorkout.class);
         startActivity(intent);
-        }
+    }
+
+    public void onDiaryButtonClick(View view){
+        Intent intent = new Intent(this, ExerciseDiary.class);
+        startActivity(intent);
+    }
 
 }
 
