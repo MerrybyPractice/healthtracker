@@ -1,24 +1,38 @@
 package com.example.healthtracker;
 
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 public class DiaryAdapter extends RecyclerView.Adapter {
-    @NonNull
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
-    }
 
-    @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    private final String[] mDataset;
 
-    }
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public TextView textView;
 
-    @Override
-    public int getItemCount() {
-        return 0;
+    public MyViewHolder(@NonNull TextView v) {
+        super(v);
+        textView = v;
     }
+}
+
+public DiaryAdapter(String[] data){
+
+    mDataset = data;
+}
+
+@Override
+public DiaryAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+        TextView v = (TextView) LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.recycler_view_item, parent, false);
+        
+}
+
+
 }

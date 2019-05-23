@@ -6,16 +6,28 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 public class ExerciseDiary extends AppCompatActivity {
 
     private AppDatabase db;
+    private RecyclerView diaryRecycler;
+    private RecyclerView.Adapter dAdapter;
+    private RecyclerView.LayoutManager diaryLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_diary);
+
+        diaryRecycler = (RecyclerView) findViewById(R.id.view_Diary);
+        diaryRecycler.setHasFixedSize(true);
+        diaryLayoutManager = new LinearLayoutManager(this);
+        diaryRecycler.setLayoutManager(diaryLayoutManager);
+        dAdapter = new DiaryAdapter(); //need to wire in database here and in adapter class
+        diaryRecycler.setAdapter(dAdapter);
 
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "diary db")
                 .allowMainThreadQueries()
