@@ -5,6 +5,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,19 +25,35 @@ public class ExerciseDiary extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_diary);
 
-        diaryRecycler = (RecyclerView) findViewById(R.id.view_Diary);
-        diaryRecycler.setHasFixedSize(true);
-        diaryLayoutManager = new LinearLayoutManager(this);
-        diaryRecycler.setLayoutManager(diaryLayoutManager);
-        dAdapter = new DiaryAdapter(); //need to wire in database here and in adapter class
-        diaryRecycler.setAdapter(dAdapter);
-
+        //allowing items to be added to the database, needs to be first thing in file.
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "diary db")
                 .allowMainThreadQueries()
                 .build();
 
         Diary fill =  new Diary("fill","fill", "fill", "fill");
         db.diaryDao().add(fill);
+
+        //putting the database in a format the recycler view can manage
+        List<Diary> entries = (db.diaryDao().getAll());
+        ArrayList<Diary> displayEntries = new ArrayList<>();
+
+        for(Diary entry: entries){
+            displayEntries.add(entry);
+        }
+
+        //pure recycler view logic
+        diaryRecycler = (RecyclerView) findViewById(R.id.view_Diary);
+        //not in demo
+        diaryRecycler.setHasFixedSize(true);
+
+        diaryLayoutManager = new LinearLayoutManager(this);
+        diaryRecycler.setLayoutManager(diaryLayoutManager);
+
+        dAdapter = new DiaryAdapter(displayEntries); //need to wire in database here and in adapter class
+        diaryRecycler.setAdapter(dAdapter);
+
+
+
 
 
     }

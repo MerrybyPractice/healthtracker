@@ -36,7 +36,18 @@
     - created and wired in a Diary database using room 
     - added diary page 
         - submission form: form_Title, form_Timestamp, form_Quant, form_Description fields. 
-        - display log 
+
+### 5/25/19 
+
+    - adjusted the bits necessary to get the Recycler view up and running 
+    added TODO's for: 
+        correcting the dummy data that is being added and displayed every time the diary page opens
+        ensuring the form is adding to the database - right now id does not seem like it is 
+        creating resource strings where necessary 
+        adding logic that connects my remove from recycler function and remove from database function. 
+            (this is mostly a quality of life feature, but it would greatly improve future development
+            and ensure a smooth UX) 
+    
 ## Features
 
 ### Finger Exercises
@@ -58,3 +69,7 @@
     CarouselView library can be found [here](https://github.com/sayyam/carouselview)
 
 ### Exercise Diary 
+    
+    Allows a user to add and view activities they have done to promote their wellness. Utilizing a 
+    Room SQUL lite database, recycler view, and a basic form this powerful tool assists in tracking 
+    and accountability for our users. 
