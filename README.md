@@ -27,6 +27,16 @@
     - Added and wired a button on the front page to take you to the finger exercise page
     - reduced the image sizes of carousel images by 80%
 
+### 5/23/19 
+
+    - added button on main page for diary 
+    - moved main page nav buttons into a vertical layout, adjusted constraints accordingly 
+    - updated dependencies with variable versions, and ensured project is synced with latest versions 
+    of dependencies 
+    - created and wired in a Diary database using room 
+    - added diary page 
+        - submission form: form_Title, form_Timestamp, form_Quant, form_Description fields. 
+        - display log 
 ## Features
 
 ### Finger Exercises
@@ -40,12 +50,13 @@
     goal is to provide a view that will be inspiring and hopeful for someone seeking health from any
     place in life.
 
- [Noel Nichols on Unsplash](https://unsplash.com/photos/yOMBnHVpxdg)
- 
- [Purnomo Capunk on Unsplash](https://unsplash.com/photos/kOqDOldrUR8)
- 
- [alfred and joa on Unsplash](https://unsplash.com/photos/O5Wy32Um6vw)
- 
- [rishikesh yogpeeth on Unsplash](https://unsplash.com/photos/CEGtclvmIII)
 
- CarouselView library can be found [here](https://github.com/sayyam/carouselview)
+    [Noel Nichols on Unsplash](https://unsplash.com/photos/yOMBnHVpxdg)
+    [Purnomo Capunk on Unsplash](https://unsplash.com/photos/kOqDOldrUR8)
+    [alfred and joa on Unsplash](https://unsplash.com/photos/O5Wy32Um6vw)
+    [rishikesh yogpeeth on Unsplash](https://unsplash.com/photos/CEGtclvmIII)
+
+    CarouselView library can be found [here](https://github.com/sayyam/carouselview)
+
+### Exercise Diary 
+

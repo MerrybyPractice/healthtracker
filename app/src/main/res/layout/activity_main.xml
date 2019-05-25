@@ -14,12 +14,12 @@
 
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/carouselView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="113dp"
+        android:layout_width="411dp"
+        android:layout_height="447dp"
+        android:layout_marginEnd="8dp"
         app:fillColor="#FFFFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/nav_Excercise"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:pageColor="#00000000"
@@ -30,38 +30,64 @@
 
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/carousel_Caption"
-        android:layout_width="0dp"
-        android:layout_height="26dp"
-        android:layout_marginBottom="200dp"
+        android:layout_width="403dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
         app:fillColor="#FFFFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/carouselView"
-        app:layout_constraintVertical_bias="0.344"
+        app:layout_constraintVertical_bias="0.0"
         app:pageColor="#00000000"
         app:radius="6dp"
         app:slideInterval="3000"
         app:strokeColor="#FF777777"
         app:strokeWidth="1dp" />
 
-    <Button
-        android:id="@+id/nav_Excercise"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="123dp"
-        android:background="@color/colorPrimary"
-        android:fontFamily="sans-serif"
-        android:lineSpacingExtra="8sp"
-        android:onClick="onButtonClick"
-        android:text="@string/nav_to_finger_exercise"
-        android:textColor="@color/colorText"
-        android:typeface="normal"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="395dp"
+        android:layout_height="107dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/carousel_Caption"
-        app:layout_constraintStart_toStartOf="@+id/carousel_Caption"
-        app:layout_constraintTop_toBottomOf="@+id/carouselView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/nav_Diary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:fontFamily="sans-serif"
+            android:lineSpacingExtra="8sp"
+            android:onClick="onDiaryButtonClick"
+            android:text="@string/nav_to_exercise_diary"
+            android:textColor="@color/colorText"
+            android:typeface="normal"
+            tools:layout_editor_absoluteX="26dp"
+            tools:layout_editor_absoluteY="560dp" />
+
+        <Button
+            android:id="@+id/nav_Excercise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:fontFamily="sans-serif"
+            android:lineSpacingExtra="8sp"
+            android:onClick="onFingerButtonClick"
+            android:text="@string/nav_to_finger_exercise"
+            android:textColor="@color/colorText"
+            android:typeface="normal"
+            tools:layout_editor_absoluteX="149dp"
+            tools:layout_editor_absoluteY="560dp" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

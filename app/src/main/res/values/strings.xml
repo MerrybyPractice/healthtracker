@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Healthtracker</string>
-    <string name="nav_to_finger_exercise"> Go to Finger Exercise</string>
+    <string name="nav_to_finger_exercise"> Finger Exercise </string>
+    <string name="nav_to_exercise_diary"> Exercise Diary </string>
+    <string name="form_hint_title"> What did you do? </string>
+    <string name="form_hint_quantity"> How many/How long? </string>
+    <string name="form_hint_timestamp"> When? </string>
+    <string name="form_hint_description"> Anything you want to remember? </string>
+    <string name="form_submit_text"> Save that Activity! </string>
 </resources>
