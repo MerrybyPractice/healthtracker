@@ -39,14 +39,18 @@
 
 ### 5/25/19 
 
+![Day4Diary](./screenshots/diary_day_4.png)
+
     - adjusted the bits necessary to get the Recycler view up and running 
     added TODO's for: 
-        correcting the dummy data that is being added and displayed every time the diary page opens
-        ensuring the form is adding to the database - right now id does not seem like it is 
-        creating resource strings where necessary 
+ 
         adding logic that connects my remove from recycler function and remove from database function. 
             (this is mostly a quality of life feature, but it would greatly improve future development
             and ensure a smooth UX) 
+    - finished off hte button push function so that it runs cleanly, updates the recycler view, and 
+    resets the form values so one knows their submission was successful. 
+    - added a delete entire table method in the DAO so I can reset my Room DB when test data becomes 
+    confusing. Could be a feature for users later, but is not currently added to front end. 
     
 ## Features
 

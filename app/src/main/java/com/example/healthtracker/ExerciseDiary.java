@@ -1,7 +1,5 @@
 package com.example.healthtracker;
 
-import com.example.healthtracker.DiaryAdapter;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,8 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
-
-import static android.net.wifi.WifiConfiguration.Status.strings;
 
 public class ExerciseDiary extends AppCompatActivity {
 

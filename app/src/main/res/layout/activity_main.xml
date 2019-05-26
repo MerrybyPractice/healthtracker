@@ -9,42 +9,23 @@
     tools:background="@color/colorBackground"
     tools:context=".MainActivity">
 
-    //from https://github.com/sayyam/carouselview as part of implementing their carousel view
-    library
-
-    <com.synnapps.carouselview.CarouselView
-        android:id="@+id/carouselView"
-        android:layout_width="411dp"
-        android:layout_height="447dp"
-        android:layout_marginEnd="8dp"
-        app:fillColor="#FFFFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:pageColor="#00000000"
-        app:radius="6dp"
-        app:slideInterval="3000"
-        app:strokeColor="#FF777777"
-        app:strokeWidth="1dp" />
-
-    <com.synnapps.carouselview.CarouselView
-        android:id="@+id/carousel_Caption"
-        android:layout_width="403dp"
-        android:layout_height="25dp"
+    <!--from https://github.com/sayyam/carouselview as part of implementing their carousel view
+    library-->
+    <com.example.healthtracker.CustomCarouselView
+        android:id="@+id/carousel_view"
+        android:layout_width="match_parent"
+        android:layout_height="501dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:fillColor="#FFFFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/carouselView"
-        app:layout_constraintVertical_bias="0.0"
-        app:pageColor="#00000000"
-        app:radius="6dp"
-        app:slideInterval="3000"
-        app:strokeColor="#FF777777"
-        app:strokeWidth="1dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+    </com.example.healthtracker.CustomCarouselView>
 
     <LinearLayout
         android:id="@+id/linearLayout"

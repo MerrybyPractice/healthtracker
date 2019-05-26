@@ -4,9 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.synnapps.carouselview.CarouselView;
-import com.synnapps.carouselview.ImageListener;
+import com.synnapps.carouselview.ViewListener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,43 +17,42 @@ public class MainActivity extends AppCompatActivity {
 
 
     CarouselView carouselView;
-    CarouselView carouselCaption;
+    ImageView image;
+    TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        carouselView = (CarouselView) findViewById(R.id.carouselView);
+        carouselView = findViewById(R.id.carousel_view);
         carouselView.setPageCount(fitnessImages.length);
+        image = findViewById(R.id.carousel_image);
+        text = findViewById(R.id.carousel_caption);
 
-        carouselCaption = (CarouselView) findViewById(R.id.carousel_Caption);
-        carouselCaption.setPageCount(captionImages.length);
-
-        carouselView.setImageListener(imageListener);
-        carouselCaption.setImageListener(captionListener);
-
-        carouselCaption.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        carouselView.setViewListener(viewListener);
     }
 
     //when adding/subtracting images and captions, be sure to alter them here as well
-    int[] fitnessImages = {R.drawable.alfred_and_joa_1284545_unsplash, R.drawable.noel_nichols_443895_unsplash, R.drawable.purnomo_capunk_1201351_unsplash, R.drawable.rishikesh_yogpeeth_1505701_unsplash};
-    int[] captionImages = {R.drawable.caption_alfred_and_joa, R.drawable.caption_noel_nichols, R.drawable.caption_purnomo_capunk, R.drawable.caption_rishikesh_yogpeeth};
+    int[] fitnessImages = new int[]{R.drawable.alfred_and_joa_1284545_unsplash, R.drawable.noel_nichols_443895_unsplash, R.drawable.purnomo_capunk_1201351_unsplash, R.drawable.rishikesh_yogpeeth_1505701_unsplash};
 
-    ImageListener imageListener = new ImageListener() {
+    int[] captionStrings = new int[]{R.string.alfred_and_joa, R.string.noel_nichols, R.string.purnomo_capunk, R.string.rishikesh_yogpeeth};
+
+    ViewListener viewListener = new ViewListener() {
         @Override
-        public void setImageForPosition(int position, ImageView imageView) {
-            imageView.setImageResource(fitnessImages[position]);
+        public View setViewForPosition(int position) {
+            View customView = getLayoutInflater().inflate(R.layout.carousel_custom_captions, null);
+            //target image view in layout and set it
+            image.setImageResource(fitnessImages[position]);
+            //need to target text view in layout and set it
+            text.setText(captionStrings[position]);
 
+            return customView;
         }
+
     };
 
-    ImageListener captionListener = new ImageListener() {
-        @Override
-        public void setImageForPosition(int position, ImageView imageView) {
-            imageView.setImageResource(captionImages[position]);
-        }
-    };
+
     //end splicing in from https://github.com/sayyam/carouselview
 
 
