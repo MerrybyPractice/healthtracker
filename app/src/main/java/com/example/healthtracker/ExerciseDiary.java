@@ -1,5 +1,7 @@
 package com.example.healthtracker;
 
+import com.example.healthtracker.DiaryAdapter;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +21,8 @@ public class ExerciseDiary extends AppCompatActivity {
     private RecyclerView diaryRecycler;
     private RecyclerView.Adapter dAdapter;
     private RecyclerView.LayoutManager diaryLayoutManager;
+    List<Diary> entries;
+    ArrayList<Diary> displayEntries;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +33,16 @@ public class ExerciseDiary extends AppCompatActivity {
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "diary db")
                 .allowMainThreadQueries()
                 .build();
-
-        Diary fill =  new Diary("fill","fill", "fill", "fill");
-        db.diaryDao().add(fill);
+        if (db.diaryDao().getAll() == null) {
+            Diary fill = new Diary("fill", "fill", "fill", "fill");
+            db.diaryDao().add(fill);
+        }
 
         //putting the database in a format the recycler view can manage
-        List<Diary> entries = (db.diaryDao().getAll());
-        ArrayList<Diary> displayEntries = new ArrayList<>();
+        entries = (db.diaryDao().getAll());
+        displayEntries = new ArrayList<>();
 
-        for(Diary entry: entries){
+        for (Diary entry : entries) {
             displayEntries.add(entry);
         }
 
@@ -51,29 +56,41 @@ public class ExerciseDiary extends AppCompatActivity {
 
         dAdapter = new DiaryAdapter(displayEntries); //need to wire in database here and in adapter class
         diaryRecycler.setAdapter(dAdapter);
-
-
-
-
-
     }
 
-    public void onDiaryButtonClick(View view){
+    public void updateEntries(){
+        entries = (db.diaryDao().getAll());
+        displayEntries = new ArrayList<>();
+
+        for (Diary entry : entries) {
+            displayEntries.add(entry);
+        }
+
+        dAdapter = new DiaryAdapter(displayEntries);
+        diaryRecycler.swapAdapter(dAdapter, true);
+    }
+
+    public void onDiaryButtonClick(View view) {
 
         TextView titleView = findViewById(R.id.form_Title);
         TextView timestampView = findViewById(R.id.form_Timestamp);
         TextView quantView = findViewById(R.id.form_Quant);
         TextView descriptionView = findViewById(R.id.form_Description);
 
-        String title = (String) titleView.getText();
-        String quantity = (String) quantView.getText();
-        String description = (String) descriptionView.getText();
-        String timestamp = (String) timestampView.getText();
+        //this seems to be the issue...
+        String title = "" + titleView.getText();
+        String quantity = "" + quantView.getText();
+        String description = "" + descriptionView.getText();
+        String timestamp = "" + timestampView.getText();
 
         Diary d = new Diary(title, quantity, description, timestamp);
 
         db.diaryDao().add(d);
         Log.i("Diary added:", title);
+
+        updateEntries();
+
+        System.out.println(db.diaryDao().getAll());
     }
 
 }
