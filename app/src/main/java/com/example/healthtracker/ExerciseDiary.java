@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import static android.net.wifi.WifiConfiguration.Status.strings;
+
 public class ExerciseDiary extends AppCompatActivity {
 
     private AppDatabase db;
@@ -33,6 +35,7 @@ public class ExerciseDiary extends AppCompatActivity {
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "diary db")
                 .allowMainThreadQueries()
                 .build();
+
         if (db.diaryDao().getAll() == null) {
             Diary fill = new Diary("fill", "fill", "fill", "fill");
             db.diaryDao().add(fill);
@@ -90,7 +93,10 @@ public class ExerciseDiary extends AppCompatActivity {
 
         updateEntries();
 
-        System.out.println(db.diaryDao().getAll());
+        titleView.setText(R.string.form_hint_title);
+        timestampView.setText(R.string.form_hint_timestamp);
+        quantView.setText(R.string.form_hint_quantity);
+        descriptionView.setText(R.string.form_hint_description);
     }
 
 }
