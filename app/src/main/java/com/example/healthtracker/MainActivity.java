@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             View customView = getLayoutInflater().inflate(R.layout.carousel_custom_captions, null);
             System.out.println(customView.findViewById(R.id.carousel_image).getClass());
           ImageView img = customView.findViewById(R.id.carousel_image);
-            TextView txt = customView.findViewById(R.id.carousel_Caption);
+            TextView txt = customView.findViewById(R.id.carousel_caption);
             //target image view in layout and set it
             img.setImageResource(fitnessImages[position]);
             //need to target text view in layout and set it

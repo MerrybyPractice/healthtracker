@@ -52,6 +52,15 @@
     - added a delete entire table method in the DAO so I can reset my Room DB when test data becomes 
     confusing. Could be a feature for users later, but is not currently added to front end. 
     
+
+### 5/28/19 
+![Day5Main](./screenshots/main_day_5.png)
+
+    - finished custom carousel view 
+    - added Shared Preferences file 
+    - added finger clicks count to that file 
+    - added cick count display and visit count display to main page 
+    
 ## Features
 
 ### Finger Exercises
