@@ -74,6 +74,7 @@
     goal is to provide a view that will be inspiring and hopeful for someone seeking health from any
     place in life.
 
+
     [Noel Nichols on Unsplash](https://unsplash.com/photos/yOMBnHVpxdg)
     [Purnomo Capunk on Unsplash](https://unsplash.com/photos/kOqDOldrUR8)
     [alfred and joa on Unsplash](https://unsplash.com/photos/O5Wy32Um6vw)
@@ -82,6 +83,7 @@
     CarouselView library can be found [here](https://github.com/sayyam/carouselview)
 
 ### Exercise Diary 
+
     
     Allows a user to add and view activities they have done to promote their wellness. Utilizing a 
     Room SQUL lite database, recycler view, and a basic form this powerful tool assists in tracking 
