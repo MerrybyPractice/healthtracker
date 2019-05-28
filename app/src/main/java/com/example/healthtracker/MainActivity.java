@@ -1,6 +1,9 @@
 package com.example.healthtracker;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,6 +14,8 @@ import com.synnapps.carouselview.ViewListener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import static com.example.healthtracker.FingerWorkout.CLICK_KEY;
+
 public class MainActivity extends AppCompatActivity {
     /* from https://github.com/sayyam/carouselview as part of the provided implementation for the
      carousel view library */
@@ -19,18 +24,34 @@ public class MainActivity extends AppCompatActivity {
     CarouselView carouselView;
     ImageView image;
     TextView text;
+    TextView clickText;
+    String clickNumber;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        //carousel view
         carouselView = findViewById(R.id.carousel_view);
         carouselView.setPageCount(fitnessImages.length);
-        image = findViewById(R.id.carousel_image);
-        text = findViewById(R.id.carousel_caption);
-
         carouselView.setViewListener(viewListener);
+
+        //prefs
+
+        clickText = findViewById(R.id.display_Finger_Count);
+        String filename = getString(R.string.app_main_preferences);
+        SharedPreferences preferences = getSharedPreferences(filename, Context.MODE_PRIVATE);
+
+        clickNumber = preferences.getString(CLICK_KEY, "0");
+
+        updateText();
+    }
+
+    private void updateText() {
+        clickText.setText(this.clickNumber);
     }
 
     //when adding/subtracting images and captions, be sure to alter them here as well
@@ -42,10 +63,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View setViewForPosition(int position) {
             View customView = getLayoutInflater().inflate(R.layout.carousel_custom_captions, null);
+            System.out.println(customView.findViewById(R.id.carousel_image).getClass());
+          ImageView img = customView.findViewById(R.id.carousel_image);
+            TextView txt = customView.findViewById(R.id.carousel_Caption);
             //target image view in layout and set it
-            image.setImageResource(fitnessImages[position]);
+            img.setImageResource(fitnessImages[position]);
             //need to target text view in layout and set it
-            text.setText(captionStrings[position]);
+            txt.setText(captionStrings[position]);
 
             return customView;
         }
