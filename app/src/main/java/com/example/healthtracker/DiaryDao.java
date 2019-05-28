@@ -25,4 +25,7 @@ public interface DiaryDao {
 
     @Delete
     void delete(Diary diary);
+
+    @Query("DELETE FROM Diary")
+    void deleteEntireTable();
 }

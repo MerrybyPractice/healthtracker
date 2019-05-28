@@ -36,7 +36,31 @@
     - created and wired in a Diary database using room 
     - added diary page 
         - submission form: form_Title, form_Timestamp, form_Quant, form_Description fields. 
-        - display log 
+
+### 5/25/19 
+
+![Day4Diary](./screenshots/diary_day_4.png)
+
+    - adjusted the bits necessary to get the Recycler view up and running 
+    added TODO's for: 
+ 
+        adding logic that connects my remove from recycler function and remove from database function. 
+            (this is mostly a quality of life feature, but it would greatly improve future development
+            and ensure a smooth UX) 
+    - finished off hte button push function so that it runs cleanly, updates the recycler view, and 
+    resets the form values so one knows their submission was successful. 
+    - added a delete entire table method in the DAO so I can reset my Room DB when test data becomes 
+    confusing. Could be a feature for users later, but is not currently added to front end. 
+    
+
+### 5/28/19 
+![Day5Main](./screenshots/main_day_5.png)
+
+    - finished custom carousel view 
+    - added Shared Preferences file 
+    - added finger clicks count to that file 
+    - added cick count display and visit count display to main page 
+    
 ## Features
 
 ### Finger Exercises
@@ -60,3 +84,7 @@
 
 ### Exercise Diary 
 
+    
+    Allows a user to add and view activities they have done to promote their wellness. Utilizing a 
+    Room SQUL lite database, recycler view, and a basic form this powerful tool assists in tracking 
+    and accountability for our users. 

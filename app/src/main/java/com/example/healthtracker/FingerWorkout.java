@@ -1,5 +1,6 @@
 package com.example.healthtracker;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ public class FingerWorkout extends AppCompatActivity {
     }
 
 
+    public final static String CLICK_KEY = "clicks";
     int countingClicks = 0;
 
     public void onButtonClick(View view) {
@@ -27,5 +29,14 @@ public class FingerWorkout extends AppCompatActivity {
         String changeText = countingClicks + " Clicks";
 
         text.setText(changeText);
+
+        //save to shared preferences
+
+        SharedPreferences preferences = PrefHelper.getMyFilePreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString(CLICK_KEY, changeText);
+
+        editor.apply();
     }
 }

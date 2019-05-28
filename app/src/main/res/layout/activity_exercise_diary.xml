@@ -12,13 +12,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="64dp"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
+        app:layout_constraintBottom_toTopOf="@id/textInputLayout2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/diary_Form_Submit">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/form_Title"
@@ -37,7 +36,9 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textInputLayout3"
-        app:layout_constraintTop_toTopOf="@+id/textInputLayout3">
+        app:layout_constraintBottom_toBottomOf="@id/textInputLayout3"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayout"
+        tools:layout_editor_absoluteY="566dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/form_Quant"
@@ -54,11 +55,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="19dp"
         app:layout_constraintEnd_toStartOf="@+id/textInputLayout2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintBottom_toBottomOf="@id/textInputLayout2"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayout"
+        tools:layout_editor_absoluteY="566dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/form_Timestamp"
@@ -73,15 +75,17 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout4"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="520dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        app:layout_constraintVertical_bias="0.074">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/form_Description"
@@ -98,29 +102,32 @@
         android:id="@+id/diary_Form_Submit"
         android:layout_width="198dp"
         android:layout_height="73dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
         android:background="@color/colorAccent"
         android:onClick="onDiaryButtonClick"
         android:text="@string/form_submit_text"
         android:textColor="@color/colorText"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
-        app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
+        app:layout_constraintEnd_toEndOf="@+id/view_Diary"
+        app:layout_constraintStart_toStartOf="@+id/view_Diary"
+        app:layout_constraintTop_toBottomOf="@+id/view_Diary"
+        app:layout_constraintVertical_bias="0.102" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/view_Diary"
         android:layout_width="372dp"
-        android:layout_height="358dp"
+        android:layout_height="360dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@color/colorPrimaryDark"
         android:clipToPadding="false"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/diary_Form_Submit"
-        app:layout_constraintStart_toStartOf="@+id/diary_Form_Submit"
-        app:layout_constraintTop_toBottomOf="@+id/diary_Form_Submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.068"
         tools:listitem="@layout/recycler_view_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>

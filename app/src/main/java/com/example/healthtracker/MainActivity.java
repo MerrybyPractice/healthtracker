@@ -1,14 +1,20 @@
 package com.example.healthtracker;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.synnapps.carouselview.CarouselView;
-import com.synnapps.carouselview.ImageListener;
+import com.synnapps.carouselview.ViewListener;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import static com.example.healthtracker.FingerWorkout.CLICK_KEY;
 
 public class MainActivity extends AppCompatActivity {
     /* from https://github.com/sayyam/carouselview as part of the provided implementation for the
@@ -16,43 +22,61 @@ public class MainActivity extends AppCompatActivity {
 
 
     CarouselView carouselView;
-    CarouselView carouselCaption;
+    ImageView image;
+    TextView text;
+    TextView clickText;
+    String clickNumber;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        carouselView = (CarouselView) findViewById(R.id.carouselView);
+
+        //carousel view
+        carouselView = findViewById(R.id.carousel_view);
         carouselView.setPageCount(fitnessImages.length);
+        carouselView.setViewListener(viewListener);
 
-        carouselCaption = (CarouselView) findViewById(R.id.carousel_Caption);
-        carouselCaption.setPageCount(captionImages.length);
+        //prefs
 
-        carouselView.setImageListener(imageListener);
-        carouselCaption.setImageListener(captionListener);
+        clickText = findViewById(R.id.display_Finger_Count);
+        String filename = getString(R.string.app_main_preferences);
+        SharedPreferences preferences = getSharedPreferences(filename, Context.MODE_PRIVATE);
 
-        carouselCaption.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        clickNumber = preferences.getString(CLICK_KEY, "0");
+
+        updateText();
+    }
+
+    private void updateText() {
+        clickText.setText(this.clickNumber);
     }
 
     //when adding/subtracting images and captions, be sure to alter them here as well
-    int[] fitnessImages = {R.drawable.alfred_and_joa_1284545_unsplash, R.drawable.noel_nichols_443895_unsplash, R.drawable.purnomo_capunk_1201351_unsplash, R.drawable.rishikesh_yogpeeth_1505701_unsplash};
-    int[] captionImages = {R.drawable.caption_alfred_and_joa, R.drawable.caption_noel_nichols, R.drawable.caption_purnomo_capunk, R.drawable.caption_rishikesh_yogpeeth};
+    int[] fitnessImages = new int[]{R.drawable.alfred_and_joa_1284545_unsplash, R.drawable.noel_nichols_443895_unsplash, R.drawable.purnomo_capunk_1201351_unsplash, R.drawable.rishikesh_yogpeeth_1505701_unsplash};
 
-    ImageListener imageListener = new ImageListener() {
+    int[] captionStrings = new int[]{R.string.alfred_and_joa, R.string.noel_nichols, R.string.purnomo_capunk, R.string.rishikesh_yogpeeth};
+
+    ViewListener viewListener = new ViewListener() {
         @Override
-        public void setImageForPosition(int position, ImageView imageView) {
-            imageView.setImageResource(fitnessImages[position]);
+        public View setViewForPosition(int position) {
+            View customView = getLayoutInflater().inflate(R.layout.carousel_custom_captions, null);
+            System.out.println(customView.findViewById(R.id.carousel_image).getClass());
+          ImageView img = customView.findViewById(R.id.carousel_image);
+            TextView txt = customView.findViewById(R.id.carousel_caption);
+            //target image view in layout and set it
+            img.setImageResource(fitnessImages[position]);
+            //need to target text view in layout and set it
+            txt.setText(captionStrings[position]);
 
+            return customView;
         }
+
     };
 
-    ImageListener captionListener = new ImageListener() {
-        @Override
-        public void setImageForPosition(int position, ImageView imageView) {
-            imageView.setImageResource(captionImages[position]);
-        }
-    };
+
     //end splicing in from https://github.com/sayyam/carouselview
 
 
