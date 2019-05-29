@@ -1,5 +1,6 @@
 package com.example.healthtracker;
 
+import android.app.Activity;
 import android.content.Context;
 
 import androidx.test.InstrumentationRegistry;
@@ -9,6 +10,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.*;
 
 /**
@@ -18,5 +21,14 @@ import static org.junit.Assert.*;
  */
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
+    //TODO: import android test implimentation rules
+    @Rule
+    public ActivityTestRule<FingerWorkout> activityTestRule = new ActivityTestRule<>(FingerWorkout.class);
+
+    public void testClickCounter(){
+        for(int x = 0; x < 10; x++){
+            onView(withId(R.id.display_Finger_Count));
+        }
+    }
 
 }

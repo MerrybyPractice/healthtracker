@@ -5,8 +5,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,6 +29,12 @@ public class ExerciseDiary extends AppCompatActivity {
     private RecyclerView.LayoutManager diaryLayoutManager;
     List<Diary> entries;
     ArrayList<Diary> displayEntries;
+    RequestQueue queue;
+    TextView titleView = findViewById(R.id.form_Title);
+    TextView timestampView = findViewById(R.id.form_Timestamp);
+    TextView quantView = findViewById(R.id.form_Quant);
+    TextView descriptionView = findViewById(R.id.form_Description);
+    String url = "https://healthtracker-backend.herokuapp.com/entry";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +71,7 @@ public class ExerciseDiary extends AppCompatActivity {
         diaryRecycler.setAdapter(dAdapter);
     }
 
-    public void updateEntries(){
+    public void updateEntries() {
         entries = (db.diaryDao().getAll());
         displayEntries = new ArrayList<>();
 
@@ -71,12 +85,8 @@ public class ExerciseDiary extends AppCompatActivity {
 
     public void onDiaryButtonClick(View view) {
 
-        TextView titleView = findViewById(R.id.form_Title);
-        TextView timestampView = findViewById(R.id.form_Timestamp);
-        TextView quantView = findViewById(R.id.form_Quant);
-        TextView descriptionView = findViewById(R.id.form_Description);
+        entryPost(view);
 
-        //this seems to be the issue...
         String title = "" + titleView.getText();
         String quantity = "" + quantView.getText();
         String description = "" + descriptionView.getText();
@@ -93,6 +103,71 @@ public class ExerciseDiary extends AppCompatActivity {
         timestampView.setText(R.string.form_hint_timestamp);
         quantView.setText(R.string.form_hint_quantity);
         descriptionView.setText(R.string.form_hint_description);
+
+
     }
+
+
+    public void entryPost(View view) {
+
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("Response", response);
+                    }
+                },
+
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("Error Response", error.toString());
+
+                        //text.setText(error.toString());
+                    }
+
+                }) {
+            //found at https://stackoverflow.com/questions/33573803/how-to-send-a-post-request-using-volley-with-string-body
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("title", titleView.getText().toString());
+                params.put("quantity", quantView.getText().toString());
+                params.put("description", descriptionView.getText().toString());
+                params.put("timestamp", timestampView.getText().toString());
+
+                return params;
+            }
+        };
+
+        queue.add(request);
+    }
+
+public void entryGet(View view){
+
+        StringRequest request = new StringRequest(
+                Request.Method.GET,
+                url,
+                new Response.Listener<String>(){
+                    @Override
+                    public void onResponse(String response){
+                        //TODO: make this work(currently trying to set a diary entry as a string not good)
+
+
+
+                        //displayEntries.add(response);
+                    }
+                },
+
+                new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error){
+                        Log.e("ERROR", error.toString());
+                    }
+                });
+        queue.add(request);
+}
 
 }
