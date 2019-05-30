@@ -68,6 +68,7 @@
     - added tłumaczenia na język polski for each string in the strings.xml 
     
     - fixed null pointer issues so that Exercise Diary page will render. 
+    - laid down the bones of the request location access 
     
 
     

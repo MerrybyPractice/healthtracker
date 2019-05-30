@@ -1,6 +1,7 @@
 package com.example.healthtracker;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -9,11 +10,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.android.volley.Cache;
+import com.android.volley.Network;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.BasicNetwork;
+import com.android.volley.toolbox.DiskBasedCache;
+import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -38,14 +45,22 @@ public class ExerciseDiary extends AppCompatActivity {
     private RecyclerView.LayoutManager diaryLayoutManager;
     List<Diary> entries;
     ArrayList<Diary> displayEntries;
-    RequestQueue queue;
-
+    Context context;
     String url = "https://healthtracker-backend.herokuapp.com";
     TextView titleView;
     TextView timestampView;
     TextView quantView;
     TextView descriptionView;
     FusedLocationProviderClient client;
+
+    //RequestQueue set up: Drawn from the Android/Volley Docs here: https://developer.android.com/training/volley/requestqueue
+    RequestQueue queue;
+    Cache cache = new DiskBasedCache(getCacheDir(), 1024 * 1024);
+    Network network = new BasicNetwork(new HurlStack());
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +70,16 @@ public class ExerciseDiary extends AppCompatActivity {
         timestampView = findViewById(R.id.form_Timestamp);
         quantView = findViewById(R.id.form_Quant);
         descriptionView = findViewById(R.id.form_Description);
+        context = this;
         client = LocationServices.getFusedLocationProviderClient(this);
+
+        queue = new RequestQueue(cache, network);
+        queue.start();
+
         //allowing items to be added to the database, needs to be first thing in file.
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "diary db")
                 .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
                 .build();
 
         if (db.diaryDao().getAll() == null) {
@@ -157,7 +178,7 @@ public class ExerciseDiary extends AppCompatActivity {
                 return params;
             }
         };
-        System.out.println("BEFORE ENQUEING THE REQUEST" + queue.toString());
+        //System.out.println("BEFORE ENQUEING THE REQUEST" + queue.toString());
         System.out.println(request.toString());
         queue.add(request);
     }
