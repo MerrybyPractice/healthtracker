@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Healthtracker</string>
     <string name="nav_to_finger_exercise"> Finger Exercise </string>
+    <string name="finger_button">Click here for strong fingers!</string>
+    <string name="finger_start">Start?</string>
     <string name="nav_to_exercise_diary"> Exercise Diary </string>
     <string name="form_hint_title"> What did you do? </string>
     <string name="form_hint_quantity"> How many/How long? </string>
@@ -11,6 +13,6 @@
     <string name="alfred_and_joa"> by Alfred and Joa </string>
     <string name="noel_nichols"> by Noel Nichols </string>
     <string name="purnomo_capunk"> by Purnomo Capunk </string>
-    <string name="rishikesh_yogpeeth"> by Rishikesh Yogpeeth </string>
     <string name="app_main_preferences"> prefs file</string>
+    <string name="rishikesh_yogpeeth">by Rishikesh Yogpeeth</string>
 </resources>

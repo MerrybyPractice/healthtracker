@@ -61,6 +61,16 @@
     - added finger clicks count to that file 
     - added cick count display and visit count display to main page 
     
+### 5/30/19 
+![Day7FingerPolish](./screenshots/finger_day_7.png)
+ 
+    - ensured there are no hard coded strings 
+    - added tłumaczenia na język polski for each string in the strings.xml 
+    
+    - fixed null pointer issues so that Exercise Diary page will render. 
+    
+
+    
 ## Features
 
 ### Finger Exercises
@@ -86,3 +96,7 @@
     Allows a user to add and view activities they have done to promote their wellness. Utilizing a 
     Room SQUL lite database, recycler view, and a basic form this powerful tool assists in tracking 
     and accountability for our users. 
+
+### Language Options 
+    
+    Healthtracker is offered in both English and Polish at this time, with more options in the works! 

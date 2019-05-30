@@ -17,9 +17,14 @@ public class Diary {
 
     private String timestamp;
 
-    public Diary(){};
+    private String location;
 
-    public Diary(String title, String quantity, String description, String timestamp){
+    public Diary() {
+    }
+
+    ;
+
+    public Diary(String title, String quantity, String description, String timestamp) {
         this.title = title;
         this.quantity = quantity;
         this.description = description;
@@ -64,5 +69,13 @@ public class Diary {
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

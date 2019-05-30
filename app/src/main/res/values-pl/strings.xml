@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_to_finger_exercise">Ćwiczenie na palec</string>
+    <string name="nav_to_exercise_diary">Dziennik ćwiczeń</string>
+    <string name="app_name">"Księga Zdrowia "</string>
+    <string name="form_hint_title">" Co zrobiłeś?"</string>
+    <string name="form_hint_quantity">"Ile zrobiliście? / Jak długo to robiliście? "</string>
+    <string name="form_hint_timestamp">" Kiedy zrobiłeś to ćwiczenie?"</string>
+    <string name="form_hint_description">" Czy jest coś, co chciałbyś zapamiętać?"</string>
+    <string name="form_submit_text">Zapisz tę aktywność!</string>
+    <string name="alfred_and_joa">autor: Alfred i Joa</string>
+    <string name="noel_nichols">autor: Noel Nichols</string>
+    <string name="purnomo_capunk">autor: Purnomo Capunk</string>
+    <string name="rishikesh_yogpeeth">autor: Rishikesh Yogpeeth</string>
+    <string name="app_main_preferences">" plik prefs"</string>
+    <string name="finger_button">Kliknij tutaj, aby uzyskać mocne palce!</string>
+    <string name="finger_start">Początek?</string>
+</resources>
